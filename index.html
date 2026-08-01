@@ -4,138 +4,97 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Veronica Rodriguez is a UX designer creating thoughtful, outcome-focused digital experiences." />
     <title>Veronica Rodriguez — UX Designer</title>
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,800&display=swap"
         rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: 'Playfair Display', serif;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="bg-[#fff1e3] text-[#2F2A26]">
+<body class="home-page">
+    <div id="header"></div>
 
-    <!-- Header -->
-    <div id="header"> </div>
+    <main>
+        <section class="hero" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">
+                I’m a <em>UX Designer</em> solving problems one coffee at a time! My name is Veronica.
+                <span>Let’s work together.</span>
+            </h1>
+        </section>
 
+        <section class="work" id="work" aria-labelledby="work-heading">
+            <div class="section-heading">
+                <h2 id="work-heading">My Work</h2>
+                <span aria-hidden="true"></span>
+            </div>
 
-    <!-- Hero -->
-    <section class="max-w-6xl mx-auto px-6 py-24">
-        <h2 class="text-4xl md:text-5xl font-semibold leading-tight">
-            Nice to meet you, I’m Veronica.
-            <br />
-            I'm a <span class="text-[#F74560]">UX Designer</span> solving user problems one coffee at a time. <span
-                class="text-[#4685D2]">Let’s work together!</span>
-        </h2>
-    </section>
-
-    <!-- Projects -->
-    <section class="max-w-6xl mx-auto px-6 py-12 space-y-16">
-
-        <!-- Project Tile -->
-        <a href="surveys.html" class="group block">
-            <div class="border border-[#2F2A26] rounded-2xl overflow-hidden transition hover:shadow-xl">
-
-                <div class="md:flex">
-
-                    <!-- LEFT: Image -->
-                    <div class="md:w-1/2">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-                            class="w-full h-full object-cover md:h-[420px]" />
+            <div class="project-list">
+                <article class="project-card project-card--survey">
+                    <div class="project-visual figma-crop" aria-hidden="true">
+                        <img src="assets/figma-homepage.png" alt="" />
                     </div>
-
-                    <!-- RIGHT: Text -->
-                    <div class="md:w-1/2 p-10 flex flex-col justify-center">
-
-                        <h3 class="text-3xl leading-snug font-semibold text-[#254E6E]">
-                            Survey Platform and Redesign
-                        </h3>
-
-                        <p class="mt-6 text-neutral-600 text-lg leading-relaxed">
-                            I helped redesign our the surveys for our edtech software to get better information on where
-                            users were struggling in
-                            our course, and how they performed on the real exam.
-                            We saw a [15x] increase in a specific response we were looking for. [Pls workshop ew]
-                        </p>
-
-                        <div class="mt-8">
-                            <span
-                                class="inline-block px-6 py-3 border border-[#2F2A26] rounded-lg shadow-sm group-hover:translate-x-1 transition">
-                                Read the case study
-                            </span>
+                    <div class="project-copy">
+                        <div class="project-title-row">
+                            <span class="project-number" aria-hidden="true">1</span>
+                            <h3>Survey Platform and Redesign</h3>
                         </div>
-
+                        <p>
+                            I helped redesign surveys for our edtech software to better understand where users were
+                            struggling in the course and how they performed on the real exam. The redesign increased
+                            score-report collection by more than 15×.
+                        </p>
+                        <a class="project-button" href="surveys.html">Read the case study</a>
                     </div>
+                </article>
 
-                </div>
-
-            </div>
-        </a>
-
-        <!-- Project Tile -->
-        <a href="wiley.html" class="group block">
-            <div class="border border-[#2F2A26] rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-lg">
-
-                <!-- Title + Subtitle -->
-                <div>
-                    <h3 class="text-2xl font-semibold tracking-tight">
-                        Project Two - Wiley Partnership Product Marketing
-                    </h3>
-                    <p class="text-sm text-neutral-600 mt-1">
-                        Leading product and design strategy to communicate value and trust through a high-profile
-                        partnership.
-                    </p>
-                </div>
-
-                <!-- Divider -->
-                <div class="border-t border-[#2F2A26] my-5"></div>
-
-                <!-- Image -->
-                <div class="rounded-xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7"
-                        class="w-full h-72 object-cover transition duration-500 group-hover:scale-105" />
-                </div>
-
-                <!-- Role + Arrow -->
-                <div class="flex justify-between items-center mt-6">
-                    <div>
-                        <p class="font-medium">Product / UX</p>
-                        <p class="text-sm text-neutral-600">App Design</p>
+                <article class="project-card project-card--pilot">
+                    <div class="project-visual">
+                        <img src="assets/digital-pilot-examiner.png"
+                            alt="Gleim Digital Pilot Examiner launch-page design" />
                     </div>
+                    <div class="project-copy">
+                        <div class="project-title-row">
+                            <span class="project-number" aria-hidden="true">2</span>
+                            <h3>Digital Pilot Examiner</h3>
+                        </div>
+                        <p>
+                            I translated a new AI-powered aviation training product into a clear, demo-first experience
+                            for pilots preparing for the oral portion of their FAA practical exam.
+                        </p>
+                        <a class="project-button" href="digital-pilot-examiner.html">Read the case study</a>
+                    </div>
+                </article>
 
-                    <!-- Arrow Icon -->
-                    <svg class="w-7 h-7 group-hover:translate-x-1 group-hover:-translate-y-1 transition" fill="none"
-                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16" />
-                    </svg>
-                </div>
-
+                <article class="project-card project-card--placeholder">
+                    <div class="project-visual figma-crop" aria-hidden="true">
+                        <img src="assets/figma-homepage.png" alt="" />
+                    </div>
+                    <div class="project-copy">
+                        <div class="project-title-row">
+                            <span class="project-number" aria-hidden="true">3</span>
+                            <h3>Project</h3>
+                        </div>
+                        <p>Description</p>
+                        <span class="project-button project-button--disabled" aria-disabled="true">Coming soon</span>
+                    </div>
+                </article>
             </div>
-        </a>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer injected here -->
     <div id="footer"></div>
 
     <script>
         document.addEventListener("DOMContentLoaded", async function () {
-            const header = await fetch("partials/header.html");
-            const footer = await fetch("partials/footer.html");
+            const [header, footer] = await Promise.all([
+                fetch("partials/header.html"),
+                fetch("partials/footer.html")
+            ]);
 
             document.getElementById("header").innerHTML = await header.text();
             document.getElementById("footer").innerHTML = await footer.text();
