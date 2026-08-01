@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Playfair+Display:ital,wght@0,600;0,700;0,800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
 </head>
@@ -155,8 +155,41 @@
                 </div>
 
                 <figure class="persona-figure">
-                    <img src="assets/survey-persona.jpg"
-                        alt="On Track Olivia or Oliver persona showing their bio and how relevant four certification paths are to them" />
+                    <div class="persona-carousel" data-persona-carousel aria-label="Survey participant personas">
+                        <div class="persona-carousel__viewport" tabindex="0">
+                            <div class="persona-carousel__track">
+                                <div class="persona-carousel__slide" id="persona-slide-1" role="tabpanel"
+                                    aria-labelledby="persona-tab-1">
+                                    <img src="assets/survey-persona.jpg"
+                                        alt="On Track Olivia or Oliver persona showing their bio and how relevant four certification paths are to them" />
+                                </div>
+
+                                <div class="persona-carousel__slide" id="persona-slide-2" role="tabpanel"
+                                    aria-labelledby="persona-tab-2" aria-hidden="true">
+                                    <img src="assets/survey-persona-in-limbo.jpg"
+                                        alt="In Limbo Liam or Lisa persona describing candidates who have not yet sat for their exam and their certification relevance" />
+                                </div>
+
+                                <div class="persona-carousel__slide" id="persona-slide-3" role="tabpanel"
+                                    aria-labelledby="persona-tab-3" aria-hidden="true">
+                                    <img src="assets/survey-persona-gone-dark.jpg"
+                                        alt="Gone Dark Grace or Greg persona describing candidates who stopped engaging and their certification relevance" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="persona-carousel__dots" role="tablist" aria-label="Choose a persona">
+                            <button id="persona-tab-1" type="button" role="tab" aria-label="On Track persona"
+                                aria-controls="persona-slide-1" aria-selected="true"></button>
+                            <button id="persona-tab-2" type="button" role="tab" aria-label="In Limbo persona"
+                                aria-controls="persona-slide-2" aria-selected="false"></button>
+                            <button id="persona-tab-3" type="button" role="tab" aria-label="Gone Dark persona"
+                                aria-controls="persona-slide-3" aria-selected="false"></button>
+                        </div>
+
+                        <p class="persona-carousel__status" aria-live="polite" aria-atomic="true">Showing persona 1
+                            of 3</p>
+                    </div>
                     <figcaption>Persona mapping helped the team account for the three most significant user types and
                         compare their needs across certification paths.</figcaption>
                 </figure>
@@ -254,6 +287,99 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async function () {
+            const carousel = document.querySelector("[data-persona-carousel]");
+
+            if (carousel) {
+                const viewport = carousel.querySelector(".persona-carousel__viewport");
+                const track = carousel.querySelector(".persona-carousel__track");
+                const slides = Array.from(carousel.querySelectorAll(".persona-carousel__slide"));
+                const tabs = Array.from(carousel.querySelectorAll('[role="tab"]'));
+                const status = carousel.querySelector(".persona-carousel__status");
+                let activeIndex = 0;
+                let pointerStart = null;
+
+                const showSlide = (nextIndex, moveFocus = false) => {
+                    activeIndex = (nextIndex + slides.length) % slides.length;
+                    track.style.transform = `translateX(-${activeIndex * 100}%)`;
+
+                    slides.forEach((slide, index) => {
+                        slide.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
+                    });
+
+                    tabs.forEach((tab, index) => {
+                        const isActive = index === activeIndex;
+                        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+                        tab.tabIndex = isActive ? 0 : -1;
+                    });
+
+                    status.textContent = `Showing persona ${activeIndex + 1} of ${slides.length}`;
+
+                    if (moveFocus) {
+                        tabs[activeIndex].focus();
+                    }
+                };
+
+                tabs.forEach((tab, index) => {
+                    tab.addEventListener("click", () => showSlide(index));
+                });
+
+                viewport.addEventListener("keydown", (event) => {
+                    if (event.key === "ArrowLeft") {
+                        event.preventDefault();
+                        showSlide(activeIndex - 1);
+                    }
+
+                    if (event.key === "ArrowRight") {
+                        event.preventDefault();
+                        showSlide(activeIndex + 1);
+                    }
+                });
+
+                carousel.querySelector(".persona-carousel__dots").addEventListener("keydown", (event) => {
+                    if (event.key === "ArrowLeft") {
+                        event.preventDefault();
+                        showSlide(activeIndex - 1, true);
+                    }
+
+                    if (event.key === "ArrowRight") {
+                        event.preventDefault();
+                        showSlide(activeIndex + 1, true);
+                    }
+
+                    if (event.key === "Home") {
+                        event.preventDefault();
+                        showSlide(0, true);
+                    }
+
+                    if (event.key === "End") {
+                        event.preventDefault();
+                        showSlide(slides.length - 1, true);
+                    }
+                });
+
+                viewport.addEventListener("pointerdown", (event) => {
+                    if (!event.isPrimary) return;
+                    pointerStart = event.clientX;
+                    viewport.setPointerCapture(event.pointerId);
+                });
+
+                viewport.addEventListener("pointerup", (event) => {
+                    if (pointerStart === null) return;
+
+                    const distance = event.clientX - pointerStart;
+                    pointerStart = null;
+
+                    if (Math.abs(distance) < 50) return;
+                    showSlide(activeIndex + (distance < 0 ? 1 : -1));
+                });
+
+                viewport.addEventListener("pointercancel", () => {
+                    pointerStart = null;
+                });
+
+                showSlide(0);
+            }
+
             const [header, footer] = await Promise.all([
                 fetch("partials/header.html"),
                 fetch("partials/footer.html")

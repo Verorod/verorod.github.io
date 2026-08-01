@@ -1,12 +1,32 @@
 <header class="site-header">
     <a class="site-brand" href="index.html" aria-label="Veronica Rodriguez, home">
-        <img src="assets/logo-placeholder.svg" alt="Veronica Rodriguez" />
+        <img src="assets/veronica-wordmark.png" alt="" />
     </a>
 
     <nav class="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a href="index.html#work">Portfolio</a>
+        <details class="site-nav-menu">
+            <summary>
+                <span>Portfolio</span>
+                <span class="site-nav-chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="site-nav-submenu">
+                <a href="surveys.html">
+                    <strong>Survey Redesign</strong>
+                    <small>UX research and survey systems</small>
+                </a>
+                <a href="digital-pilot-examiner.html">
+                    <strong>Digital Pilot Examiner</strong>
+                    <small>AI-powered aviation training</small>
+                </a>
+                <div class="site-nav-placeholder" aria-disabled="true">
+                    <strong>Wiley Partnership</strong>
+                    <small>Coming soon</small>
+                </div>
+            </div>
+        </details>
         <a href="#" aria-disabled="true">Resume</a>
         <a href="#about">About</a>
+        <a href="https://www.linkedin.com/in/verocrod/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </nav>
 </header>
