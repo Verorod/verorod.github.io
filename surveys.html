@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="How Veronica Rodriguez redesigned an edtech survey experience and increased score-report collection by 1,567%." />
-    <title>Survey Redesign — Veronica Rodriguez</title>
+        content="How Veronica Rodriguez redesigned Gleim's candidate feedback survey and increased score-report collection by 1,567%." />
+    <title>Redesigning Feedback Loops for Candidates — Veronica Rodriguez</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,257 +14,381 @@
         href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 
 <body class="survey-page">
     <div id="header"></div>
 
     <main>
-        <section class="survey-hero survey-shell" aria-labelledby="survey-title">
-            <div class="survey-hero-title">
-                <p class="survey-eyebrow">Case study</p>
-                <h1 id="survey-title">Survey Redesign</h1>
-            </div>
+        <section class="survey-hero" aria-labelledby="survey-title">
+            <h1 id="survey-title" class="survey-a11y-title">
+                UX Case Study: Redesigning Feedback Loops for Candidates. Gleim's candidate survey wasn't reaching the
+                right people at the right moment, and building or editing it required an engineer every time. I
+                redesigned the experience around three distinct candidate paths and rebuilt the process so anyone
+                could iterate on it independently.
+            </h1>
 
-            <dl class="survey-meta">
+            <div class="survey-hero-dots">
+                <div class="survey-hero-card">
+                    <img src="assets/survey/survey-header.svg" alt=""
+                        width="729" height="472" />
+                </div>
+            </div>
+        </section>
+
+        <div class="survey-shell">
+            <dl class="case-meta">
+                <div>
+                    <dt>Team</dt>
+                    <dd>Content, IT</dd>
+                </div>
                 <div>
                     <dt>Role</dt>
-                    <dd>Lead UX Designer responsible for end-to-end survey experience redesign, including content
-                        strategy, survey logic, and cross-functional coordination with Product and Engineering.</dd>
+                    <dd>Lead User Experience Designer</dd>
                 </div>
                 <div>
                     <dt>Date</dt>
-                    <dd>October 2024–June 2025</dd>
+                    <dd>October 2025 – December 2025</dd>
+                </div>
+                <div>
+                    <dt>Focus</dt>
+                    <dd>Survey Platform</dd>
                 </div>
             </dl>
-        </section>
+        </div>
 
         <article class="survey-shell survey-case-study">
-            <section class="survey-section" aria-labelledby="overview-heading">
-                <div class="survey-heading-row">
-                    <h2 id="overview-heading">Overview</h2>
-                    <span aria-hidden="true"></span>
+            <section class="survey-section survey-sample" aria-label="Try the survey">
+                <div class="survey-embed">
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                        src="https://embed.figma.com/proto/01OKGkIsW3TvmBknL882nE/Pass_Fail?node-id=6532-17097&viewport=-1826%2C510%2C0.16&scaling=contain&content-scaling=responsive&starting-point-node-id=6532%3A17097&page-id=6532%3A15371&embed-host=share"
+                        allowfullscreen title="Interactive prototype of the redesigned survey"></iframe>
                 </div>
-                <p class="survey-intro">Gleim is a company that makes exam-prep software and materials. The goal of
-                    this project was to help the Content Department and course authors understand where candidates
-                    needed more support—based on how customers performed on their real certification exams.</p>
+                <div class="survey-sample-footer">
+                    <p class="survey-intro">Initial sample of the survey redesign — click through the prototype below.</p>
+                    <a class="survey-sample-cta" href="#finalizing-survey">View final design</a>
+                </div>
             </section>
 
-            <section class="survey-section" aria-labelledby="challenge-heading">
+            <nav class="case-toc" aria-label="Case study sections">
+                <span class="case-toc-label">On This Page</span>
+                <div class="case-toc-links">
+                    <a href="#challenges-heading">The Challenges</a>
+                    <a href="#personas-heading">Designing for 3 Personas</a>
+                    <a href="#finalizing-heading">Finalizing the Survey</a>
+                    <a href="#impact-heading">Impact</a>
+                </div>
+            </nav>
+
+            <section class="survey-section" id="the-challenges" aria-labelledby="challenges-heading">
+                <p class="survey-eyebrow">Overview</p>
                 <div class="survey-heading-row">
-                    <h2 id="challenge-heading">The Challenge</h2>
+                    <h2 id="challenges-heading">The Challenges</h2>
                     <span aria-hidden="true"></span>
                 </div>
                 <div class="survey-copy">
-                    <p>The survey experience was straightforward, but the system behind it created friction for both
-                        candidates and the teams maintaining it.</p>
-                    <p>Our team wanted richer feedback and more score reports. Meanwhile, users were being asked about
-                        exams they had not taken yet, optional fields felt required, and one survey tried to serve
-                        certification paths with very different timelines and scoring systems.</p>
-                    <p>We were also relying on an outdated internal tool to collect responses. Product and Content
-                        needed a way to learn from survey data without depending on engineering for every update.</p>
+                    <p>Gleim Exam Prep is a company that focuses on preparing Accounting and Aviation candidates to
+                        pass their exams so they can go on to earn their certification or pilot's license. This
+                        project focused on Accounting, and was initially pitched as a request to increase the
+                        response rate as well as update the questions in the current survey to provide the Content
+                        Department with direct feedback on where candidates were struggling in the course.</p>
+                    <p class="survey-emphasis">As the team took a closer look we noticed several other items we needed to consider to stick
+                        the landing.</p>
                 </div>
-            </section>
 
-            <section class="survey-section survey-goals" aria-labelledby="goals-heading">
-                <h2 id="goals-heading" class="survey-centered-heading">Project Goals</h2>
+                <div class="role-card-grid">
+                    <div class="role-card">
+                        <h3>User Experience</h3>
+                        <p>Users were being served a question about passing their exam in a different survey that was
+                            meant to collect feedback midway through the course. Most candidates had not sat for
+                            their exam at that point. There was another, older survey sent at the end of the course,
+                            but its questions were so general it rarely produced informative comments.</p>
+                        <img src="assets/survey/role-ux.svg" alt="" />
+                    </div>
+                    <div class="role-card">
+                        <h3>Product Management</h3>
+                        <p>Moving quickly on surveys was surprisingly slow since the process required engineering
+                            involvement from beginning to end, even for minor edits. The tools we had for logging
+                            responses were outdated and provided no data visualization. Reading the results required
+                            familiarity and access to the tool, or someone to walk you through it.</p>
+                        <img src="assets/survey/role-product.svg" alt="" />
+                    </div>
+                    <div class="role-card role-card--content">
+                        <div>
+                            <h3>Content Department</h3>
+                            <ul class="role-card-list">
+                                <li>Even if a user did give their feedback in one of the two surveys, there was no
+                                    easy way for Content to find an individual customer's comment.</li>
+                                <li>Users could indicate whether they passed or failed, as well as their score, but
+                                    could not upload their score report: the official document with detailed exam
+                                    results. Support representatives were manually requesting these reports, and it
+                                    wasn't easily accessible to Content.</li>
+                            </ul>
+                        </div>
+                        <img src="assets/survey/role-content.svg" alt="" />
+                    </div>
+                </div>
+
+                <p class="goal-intro">That translated into the following goals:</p>
                 <div class="goal-grid">
                     <article class="goal-card">
-                        <div class="goal-mark goal-mark--users" aria-hidden="true"><span>U</span></div>
+                        <img class="goal-mark" src="assets/survey/goal-users.svg" alt="" />
                         <h3>Users</h3>
-                        <p>Create a timely and relevant survey that adapts to each certification path.</p>
+                        <p>Deliver a timely and relevant survey that asks at the right moment in each candidate's
+                            journey.</p>
                     </article>
                     <article class="goal-card">
-                        <div class="goal-mark goal-mark--business" aria-hidden="true"><span>B</span></div>
+                        <img class="goal-mark" src="assets/survey/goal-business.svg" alt="" />
                         <h3>Business</h3>
-                        <p>Increase score-report acquisition and overall response while building scalable survey
-                            infrastructure.</p>
+                        <p>Increase score report acquisition and overall survey response while creating a better
+                            process for how we implement and release surveys.</p>
                     </article>
                     <article class="goal-card">
-                        <div class="goal-mark goal-mark--operations" aria-hidden="true"><span>O</span></div>
+                        <img class="goal-mark" src="assets/survey/goal-content.svg" alt="" />
+                        <h3>Content</h3>
+                        <p>Give other department leadership visibility into our feedback so they are empowered to
+                            make adjustments to their own work based on user needs.</p>
+                    </article>
+                    <article class="goal-card">
+                        <img class="goal-mark" src="assets/survey/goal-operational.svg" alt="" />
                         <h3>Operational</h3>
-                        <p>Enable non-engineers to build and iterate on surveys independently with a third-party
-                            platform.</p>
+                        <p>Enable non-engineers to create and deliver surveys without needing engineering involvement
+                            every step of the way.</p>
                     </article>
-                    <article class="goal-card goal-card--wide-left">
-                        <div class="goal-mark goal-mark--strategy" aria-hidden="true"><span>S</span></div>
-                        <h3>Strategic</h3>
-                        <p>Give leadership visibility into the feedback candidates are empowered to share.</p>
+                </div>
+                <p class="goal-outro">The majority of my work focused on the Users and Business goals with some
+                    improvements to Operational and Content.</p>
+            </section>
+
+            <section class="survey-section" id="three-personas" aria-labelledby="personas-heading">
+                <p class="survey-eyebrow">Ideation</p>
+                <div class="survey-heading-row">
+                    <h2 id="personas-heading">Designing for 3 Personas</h2>
+                    <span aria-hidden="true"></span>
+                </div>
+                <p class="survey-intro">To make sure we were improving our timing and questions for the users, I went
+                    over customer feedback and identified 3 user journeys, regardless of certification, we needed to
+                    consider.</p>
+
+                <div class="persona-stack">
+                    <article class="persona-card">
+                        <div class="persona-card-header">
+                            <h3>Completed Exam</h3>
+                            <p>This was the most straightforward. We just needed to focus on score collection and
+                                post-exam feedback.</p>
+                        </div>
+                        <button type="button" class="persona-lightbox-trigger" data-lightbox-trigger aria-label="View larger image of this journey map">
+                            <img src="assets/survey/persona-completed.png"
+                                alt="Customer journey map titled 'On Track Olivia/Oliver: The Prompt Candidate,' featuring an illustrated avatar of a woman with short dark hair, glasses, and a brown cardigan, captioned with the quote 'I completed the mock exams and felt ready going in. The real exam was harder than I expected but I got through it.' A scenario box describes this as the most straightforward persona, who followed their study timeline, sat for the exam as planned, and responded to the survey promptly. A six-stage table tracks touchpoint, action, and emotion across: setting up a study planner (eager), completing studies (focused), taking the exam (nervous), receiving results (relieved), receiving a survey (curious), and responding within the hour (pleased to share results)." />
+                        </button>
                     </article>
-                    <article class="goal-card goal-card--wide-right">
-                        <div class="goal-mark goal-mark--design" aria-hidden="true"><span>D</span></div>
-                        <h3>Design Ops</h3>
-                        <p>Adapt the design system so third-party surveys could be created without redesigning each
-                            one.</p>
+                    <article class="persona-card">
+                        <div class="persona-card-header">
+                            <h3>Not Yet Taken</h3>
+                            <p>Sometimes users reschedule their exam by a day, so they don't have their results yet, but
+                                they still finished the course and have valuable feedback.</p>
+                        </div>
+                        <button type="button" class="persona-lightbox-trigger" data-lightbox-trigger aria-label="View larger image of this journey map">
+                            <img src="assets/survey/persona-not-taken.png"
+                                alt="Customer journey map titled 'In Limbo Liam/Lisa: The Candidate Finding Their Way,' featuring an illustrated avatar of a person with long reddish hair, glasses, and a goatee, captioned with the quote 'I'm struggling to balance work and studying. It's going slower than expected, so I rescheduled my exam.' A scenario box describes this persona as still studying and behind schedule but not giving up, with life circumstances competing with their goals. An eight-stage table tracks touchpoint, action, and emotion across: setting up a study planner (eager), starting studies and falling behind (frustrated), rescheduling the exam (relieved), receiving a survey (curious), responding 'no' with a new exam date (may sound disappointed), completing studies (focused), taking the rescheduled exam (nervous), and responding 'yes' to a follow-up survey (happy to share results)." />
+                        </button>
                     </article>
+                    <article class="persona-card">
+                        <div class="persona-card-header">
+                            <h3>On a Study Break</h3>
+                            <p>This user was the most complex because it's hard to predict why or when a user takes a
+                                break. We didn't want to exclude them but wanted to be sensitive to any challenges they
+                                had while studying.</p>
+                        </div>
+                        <button type="button" class="persona-lightbox-trigger" data-lightbox-trigger aria-label="View larger image of this journey map">
+                            <img src="assets/survey/persona-study-break.png"
+                                alt="Customer journey map titled 'Gone Dark Grace/Greg: The Ghost Candidate,' featuring an illustrated avatar of a woman with a brown bob haircut, captioned with the quote 'I haven't had a lot of time and energy. I'll try my best moving forward.' A scenario box explains this persona has gone silent — it's unclear whether they passed elsewhere, failed and stepped back, or paused studying — and that outreach in the wrong tone may not provide the encouragement they need. A seven-stage table tracks touchpoint, action, and emotion across: starting the course (going through the motions), starting studying (frustrated), stopping studying (disappointed, stressed), receiving a survey 1–2 months later (curious), responding 'no' to the exam and citing a break (disappointed in response), customer support outreach (feeling supported), and continuing studying toward a rescheduled exam (ready to start over)." />
+                        </button>
+                    </article>
+                </div>
+
+                <p class="persona-callout">To view the precise timing you can view the FigJam file I created for the
+                    team while we were sorting out the details.</p>
+
+                <div class="survey-subsection">
+                    <h4>We adapted our delivery method</h4>
+                    <p class="delivery-lede">I knew in-course notification fatigue at this point in their journey was
+                        a real risk, if they received it at all. Chances were good they were either done using the
+                        course or they moved on to the next exam part/section. Based on what I had learned about the
+                        exam journey, it was more likely that they would be checking their email for exam results,
+                        but we couldn't assume the outcome. As a result, we decided to focus on email communication
+                        that was uplifting and open to all 3 personas.</p>
+
+                    <div class="divider-label">Emails</div>
+                    <div class="email-carousel" data-carousel>
+                        <button type="button" class="email-carousel-arrow email-carousel-arrow--prev" data-carousel-prev aria-label="Previous email">
+                            <img src="assets/icons/arrow-left.svg" alt="" aria-hidden="true" />
+                        </button>
+
+                        <div class="email-carousel-track">
+                            <figure class="email-item is-active" data-carousel-slide>
+                                <figcaption>
+                                    <h4>Exam Date</h4>
+                                    <p>If a user provides us an exam date and maintains it, not only does their
+                                        interface update with a link to the course, but they receive this email.</p>
+                                </figcaption>
+                                <img src="assets/survey/email-completed.png"
+                                    alt="Gleim Exam Prep marketing email with a red header photo of two professionals talking while walking, one holding a notebook and earbuds, the other holding coffee and a laptop, overlaid with the headline 'Every journey tells a story' and subtext 'Let us know how your exam went. Your experience is our guide.' Body text addressed to '[First Last Name]' explains Gleim's mission to support candidates and asks them to take a brief survey about their exam experience, with a black 'Take A Survey' button, closing 'Thank you for studying with Gleim. Sincerely, The Gleim Team,' and a footer with the Gleim Exam Prep logo, tagline 'Educate. Advance. Elevate.,' address, and phone number." />
+                            </figure>
+                            <figure class="email-item" data-carousel-slide>
+                                <figcaption>
+                                    <h4>Inactivity</h4>
+                                    <p>This email wasn't implemented, but we planned to create an email to reach out to
+                                        any users who had not entered their course in awhile.</p>
+                                </figcaption>
+                                <img src="assets/survey/email-inactivity.png"
+                                    alt="Gleim Exam Prep email template headed 'Your Experience, Your Feedback,' greeting 'Hi [Name],' noting a pause in the recipient's exam journey with placeholder '[Course Name]' and asking them to share feedback via a brief survey (placeholder '[x minutes]'), with a red 'Take A Survey' button and closing 'Sincerely, Team Gleim.' Footer has a black background with the Gleim Exam Prep logo, tagline 'Educate. Advance. Elevate.,' address, and phone number." />
+                            </figure>
+                            <figure class="email-item" data-carousel-slide>
+                                <figcaption>
+                                    <h4>Support Template</h4>
+                                    <p>Not implemented, but we were prepared to provide our support team with a template
+                                        to respond or reach out to users like "Gone Dark Grace/Greg" or "In Limbo
+                                        Liam/Lisa".</p>
+                                </figcaption>
+                                <img src="assets/survey/email-general.png"
+                                    alt="Black-and-white Gleim Exam Prep email template headed 'Share Your Thoughts,' greeting 'Hi [Name],' congratulating the recipient on completing their exam and asking them to complete a brief survey (length shown as placeholder '[x minutes]') to share feedback, with a red 'Take A Survey' button. The closing includes bracketed placeholder text — '[Thank you for choosing Gleim to be a part of your journey...]' — plus an internal draft note reading 'I think PCs should be able to edit this however they need to' and a placeholder signature line '[Maybe Personal Counselor signature?]'. Footer has a black background with the Gleim Exam Prep logo, tagline, and address." />
+                            </figure>
+                        </div>
+
+                        <button type="button" class="email-carousel-arrow email-carousel-arrow--next" data-carousel-next aria-label="Next email">
+                            <img src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+                        </button>
+                    </div>
+                    <div class="email-carousel-dots" data-carousel-dots>
+                        <button type="button" class="email-carousel-dot is-active" data-carousel-dot aria-label="Show Exam Date email"></button>
+                        <button type="button" class="email-carousel-dot" data-carousel-dot aria-label="Show Inactivity email"></button>
+                        <button type="button" class="email-carousel-dot" data-carousel-dot aria-label="Show Support Template email"></button>
+                    </div>
+
+                    <div class="divider-label">In Course Link</div>
+                    <p>One thing we were aware of, however, is that we had a high response rate for the old Customer
+                        Survey. The course had been designed to change the calendar icon to a survey link once their
+                        exam date had passed. As mentioned previously, the questions weren't very relevant to their
+                        exam experience. So I proposed swapping the surveys, and this proved to be where many of our
+                        EA and CIA users were going to answer this survey.</p>
+                    <div class="recommendation-stack">
+                        <img src="assets/survey/recommendation-box-1.svg" alt="Study recommendation box prompting a candidate who hasn't confirmed their exam status to share how their exam went." />
+                        <img class="recommendation-arrow" src="assets/survey/arrow-down.svg" alt="" aria-hidden="true" />
+                        <img src="assets/survey/recommendation-box-2.svg" alt="Study recommendation box wishing a candidate good luck ahead of their upcoming exam." />
+                    </div>
                 </div>
             </section>
 
-            <section class="survey-section" aria-labelledby="delivery-heading">
+            <section class="survey-section" id="finalizing-survey" aria-labelledby="finalizing-heading">
+                <p class="survey-eyebrow">Design</p>
                 <div class="survey-heading-row">
-                    <h2 id="delivery-heading">Rethinking Our Delivery</h2>
+                    <h2 id="finalizing-heading">Finalizing the Survey</h2>
                     <span aria-hidden="true"></span>
+                </div>
+                <p class="survey-intro">My goal for designing the survey was to make sure I improved on the clarity
+                    of optional questions, tailored the questions to each certification, and established a theme
+                    within our platform.</p>
+
+                <div class="mapping-question">
+                    <div>
+                        <h3>Mapping out the Question</h3>
+                        <p>Instead of serving all the questions at once, I created a paginated survey to help
+                            separate the user personas and serve them different questions.</p>
+                    </div>
+                    <div>
+                        <div class="flowchart-viewer" data-flowchart-viewer>
+                            <div class="flowchart-viewer-controls">
+                                <button type="button" data-flowchart-zoom-out aria-label="Zoom out">−</button>
+                                <button type="button" data-flowchart-zoom-reset aria-label="Reset zoom">Reset</button>
+                                <button type="button" data-flowchart-zoom-in aria-label="Zoom in">+</button>
+                            </div>
+                            <div class="flowchart-viewer-canvas" data-flowchart-canvas>
+                                <img src="assets/survey/question-flowchart.png" data-flowchart-image
+                                    alt="Flowchart of the accounting exam results survey logic, branching by whether the candidate sat for their exam, received results, or is on a study break." />
+                            </div>
+                            <script type="text/plain" data-flowchart-source>flowchart TD
+    A[Accounting Exam Results Survey] -->|Read statement| B(Let us know where you're at in your study journey for **examName** **examSectionName**)
+    B --> C{Did you sit for your exam?*}
+    C -->|Yes| D[How prepared did you feel going into your exam?*]
+    C -->|Not yet, still studying| E[Have you registered for your exam?*]
+    C -->|No, I'm taking a break from my studies| F[Studying can be difficult. Personal Counselor statement]
+    D --> G{Have you received your exam results yet?*}
+    G --> |Yes, I passed and examName is EA| M[Did the difficulty of the exam match your expectations? *Optional*]
+    G --> |Yes, I passed and examName is CMA, CPA| K[Enter your score below*]
+    G --> |No, not yet| M[Did the difficulty of the exam match your expectations? *Optional*]
+    M --> N
+    G --> |Yes, I failed and examName is any| K[Enter your score below*]
+    K --> |If exam name is EA and failed or exam name is CIA, CIAC, CMA, CPA and passed or failed  |QQ[Upload your score report below *Optional*]
+    E -->|Yes| H[When do you plan to take your exam?*]
+    QQ --> N[Which topic areas were most challenging for you? *Optional*]
+    N --> O[Additional Comments *Optional*]
+    E -->|No| I[We understand you're still preparing for your exam. Contact Personal Counselor statement.]
+    H --> J[Additional Comments *Optional*]
+    I --> J[Additional Comments *Optional*]
+    F --> P{What prompted you to to take a break from studying? *Optional*}
+    P --> |study burnout, personal reasons, lack of time, difficulty with content|Q[How satisified are you with the Gleim Accounting product so far?*]
+    P --> |other| R[please specify if other*]
+    R --> Q
+    Q --> S[Do you plan to resume your exam preparation with Gleim?*]
+    S --> T[Do you have any other feedback or suggestions that could help improve your experience with Gleim Accounting Products *Optional*]
+    O --> |Yes, passed| U[Thank You with Confetti]
+    O --> |Yes failed or no not yet| V[Thank you, no confetti]
+    J --> V
+    T --> V</script>
+                        </div>
+                    </div>
+                </div>
+                <p class="survey-embed-caption">Scroll or pinch to zoom, drag to pan around the flowchart.</p>
+
+                <div class="survey-subsection">
+                    <div class="divider-label">
+                        <span class="divider-label-stack">
+                            <span class="divider-label-eyebrow">Before</span>
+                            <span class="divider-label-heading">Old Design</span>
+                        </span>
+                    </div>
+                    <figure class="before-after-figure">
+                        <img src="assets/survey/old-survey.png"
+                            alt="The original Gleim customer survey: a single long form asking every candidate the same questions regardless of exam status, with a 100%-completion requirement to receive a CPE offer." />
+                    </figure>
                 </div>
 
                 <div class="survey-subsection">
-                    <h3>Designing for Three Different Paths</h3>
-                    <p>Our existing survey collapsed every learner into one path. I mapped the experience around the
-                        three moments that actually shaped what a candidate could answer.</p>
-
-                    <div class="path-list">
-                        <article class="path-card">
-                            <div class="path-number" aria-hidden="true">01</div>
-                            <div>
-                                <h4>Completed Exam</h4>
-                                <p>This was the most straightforward path: focus on score collection and post-exam
-                                    feedback while the experience was still fresh.</p>
-                            </div>
-                        </article>
-                        <article class="path-card">
-                            <div class="path-number" aria-hidden="true">02</div>
-                            <div>
-                                <h4>Not Yet Taken</h4>
-                                <p>Gather preparation insights and feedback on course content without making candidates
-                                    feel bad for not sitting for the exam yet.</p>
-                            </div>
-                        </article>
-                        <article class="path-card">
-                            <div class="path-number" aria-hidden="true">03</div>
-                            <div>
-                                <h4>On a Study Break</h4>
-                                <p>Understand barriers sensitively and offer “personal reasons” as an option—giving
-                                    support teams a chance to help without forcing disclosure.</p>
-                            </div>
-                        </article>
+                    <div class="divider-label">
+                        <span class="divider-label-stack">
+                            <span class="divider-label-eyebrow">After</span>
+                            <span class="divider-label-heading">Final Design Demo</span>
+                        </span>
                     </div>
-                </div>
-
-                <div class="survey-subsection" aria-labelledby="timing-heading">
-                    <h3 id="timing-heading">General Demographic Information and Timing</h3>
-                    <p>The triggering moment could not be universal. I charted survey timing against the cadence of
-                        each certification so the question arrived when users could answer it meaningfully.</p>
-
-                    <div class="timing-grid" aria-label="Certification timing groups">
-                        <div><span>CPA</span><p>Section-based exam schedule</p></div>
-                        <div><span>CMA</span><p>Two-part exam windows</p></div>
-                        <div><span>CIA</span><p>Three-part certification</p></div>
-                        <div><span>CIA Challenge</span><p>Accelerated pathway</p></div>
-                        <div><span>EA</span><p>Seasonal testing windows</p></div>
-                        <div><span>Demographic</span><p>Relevant across paths</p></div>
+                    <div class="final-design-demo">
+                        <iframe src="assets/survey/final-design-prototype.html" title="Interactive prototype of the final survey design"
+                            loading="lazy"></iframe>
                     </div>
-                </div>
-
-                <figure class="persona-figure">
-                    <div class="persona-carousel" data-persona-carousel aria-label="Survey participant personas">
-                        <div class="persona-carousel__viewport" tabindex="0">
-                            <div class="persona-carousel__track">
-                                <div class="persona-carousel__slide" id="persona-slide-1" role="tabpanel"
-                                    aria-labelledby="persona-tab-1">
-                                    <img src="assets/survey-persona.jpg"
-                                        alt="On Track Olivia or Oliver persona showing their bio and how relevant four certification paths are to them" />
-                                </div>
-
-                                <div class="persona-carousel__slide" id="persona-slide-2" role="tabpanel"
-                                    aria-labelledby="persona-tab-2" aria-hidden="true">
-                                    <img src="assets/survey-persona-in-limbo.jpg"
-                                        alt="In Limbo Liam or Lisa persona describing candidates who have not yet sat for their exam and their certification relevance" />
-                                </div>
-
-                                <div class="persona-carousel__slide" id="persona-slide-3" role="tabpanel"
-                                    aria-labelledby="persona-tab-3" aria-hidden="true">
-                                    <img src="assets/survey-persona-gone-dark.jpg"
-                                        alt="Gone Dark Grace or Greg persona describing candidates who stopped engaging and their certification relevance" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="persona-carousel__dots" role="tablist" aria-label="Choose a persona">
-                            <button id="persona-tab-1" type="button" role="tab" aria-label="On Track persona"
-                                aria-controls="persona-slide-1" aria-selected="true"></button>
-                            <button id="persona-tab-2" type="button" role="tab" aria-label="In Limbo persona"
-                                aria-controls="persona-slide-2" aria-selected="false"></button>
-                            <button id="persona-tab-3" type="button" role="tab" aria-label="Gone Dark persona"
-                                aria-controls="persona-slide-3" aria-selected="false"></button>
-                        </div>
-
-                        <p class="persona-carousel__status" aria-live="polite" aria-atomic="true">Showing persona 1
-                            of 3</p>
-                    </div>
-                    <figcaption>Persona mapping helped the team account for the three most significant user types and
-                        compare their needs across certification paths.</figcaption>
-                </figure>
-            </section>
-
-            <section class="survey-section survey-narrative" aria-labelledby="method-heading">
-                <div class="survey-heading-row survey-heading-row--small">
-                    <h2 id="method-heading">Changing Our Delivery Method</h2>
-                    <span aria-hidden="true"></span>
-                </div>
-                <div class="survey-copy">
-                    <p>We first considered showing the survey in a modal. But the product already used modals for other
-                        interventions, which risked notification fatigue. We tested this method with a different survey
-                        and saw more finished forms, but overall completion remained low.</p>
-                </div>
-
-                <div class="solution-callout">
-                    <p class="survey-eyebrow">Our solution</p>
-                    <h3>Revisit the User Journey</h3>
-                    <p>We repurposed an existing header that appeared when a learner completed a course. It was
-                        persistent without being disruptive—and a previous survey in that location had already shown
-                        strong response rates. For CPA and CMA candidates with different exam timelines, we added
-                        targeted email campaigns with context-specific copy.</p>
+                    <a class="final-design-demo-link" href="assets/survey/final-design-prototype.html" target="_blank" rel="noopener">
+                        Open prototype in a new tab
+                        <img class="nav-arrow" src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
+                    </a>
                 </div>
             </section>
 
-            <section class="survey-section" aria-labelledby="designing-heading">
-                <div class="survey-heading-row">
-                    <h2 id="designing-heading">Designing the Survey</h2>
-                    <span aria-hidden="true"></span>
-                </div>
-                <p>My goal was to improve the clarity of optional questions, tailor content to each certification, and
-                    establish a theme within our new survey platform. I connected Product’s knowledge gaps with the
-                    feedback candidates could realistically provide.</p>
-
-                <div class="process-strip">
-                    <article><span>01</span><h3>Map</h3><p>Catalog the questions and internal knowledge gaps.</p></article>
-                    <article><span>02</span><h3>Branch</h3><p>Wireframe all conditional paths and eligibility rules.</p></article>
-                    <article><span>03</span><h3>Validate</h3><p>Give Engineering and QA a shared logic diagram.</p></article>
-                    <article><span>04</span><h3>Deliver</h3><p>Build a reusable, on-brand survey system.</p></article>
-                </div>
-
-                <div class="survey-subsection clarity-section">
-                    <h3>Clarity and Design</h3>
-                    <div class="clarity-grid">
-                        <div class="survey-copy">
-                            <p>The survey changed significantly from the original customer survey, which had several
-                                branding changes that were out of date.</p>
-                            <p>The platform’s selected values also enabled conditional logic. Only candidates whose
-                                certifications issued numerical results saw a score question, eliminating a frequent
-                                source of confusion.</p>
-                        </div>
-                        <aside>
-                            <p>“The visual logic made it possible for stakeholders to validate what users would see
-                                before every survey path was built.”</p>
-                        </aside>
-                    </div>
-                </div>
-            </section>
-
-            <section class="survey-section impact-section" aria-labelledby="impact-heading">
+            <section class="survey-section impact-section" id="impact" aria-labelledby="impact-heading">
+                <p class="survey-eyebrow">Year check-in</p>
                 <div class="survey-heading-row">
                     <h2 id="impact-heading">Impact</h2>
                     <span aria-hidden="true"></span>
                 </div>
                 <p>Comparing the same three-month period year over year, score-report collection rose from 30 reports
-                    to 500. The redesign also removed an operational bottleneck: non-engineers can now build and deploy
-                    surveys independently.</p>
+                    to 500. The redesign also removed an operational bottleneck: non-engineers can now build and
+                    deploy surveys independently.</p>
 
                 <div class="impact-grid">
                     <div class="impact-stat">
                         <span>30</span>
                         <p>score reports before</p>
                     </div>
-                    <div class="impact-arrow" aria-hidden="true">→</div>
+                    <img class="impact-arrow" src="assets/icons/arrow-right.svg" alt="" aria-hidden="true" />
                     <div class="impact-stat impact-stat--after">
                         <span>500</span>
                         <p>score reports after</p>
@@ -277,109 +401,21 @@
             </section>
 
             <nav class="case-study-nav" aria-label="Case study navigation">
-                <a href="index.html#work"><span aria-hidden="true">←</span> Back to all work</a>
-                <a href="digital-pilot-examiner.html">Next case study <span aria-hidden="true">→</span></a>
+                <a href="index.html#work"><img class="nav-arrow" src="assets/icons/arrow-left.svg" alt="" aria-hidden="true" /> Back to all work</a>
+                <span class="case-study-nav-disabled" aria-disabled="true">Next case study (coming soon) <img class="nav-arrow" src="assets/icons/arrow-right-gray.svg" alt="" aria-hidden="true" /></span>
             </nav>
         </article>
     </main>
+
+    <div class="lightbox" data-lightbox hidden>
+        <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close larger image">×</button>
+        <img class="lightbox-image" data-lightbox-image src="" alt="" />
+    </div>
 
     <div id="footer"></div>
 
     <script>
         document.addEventListener("DOMContentLoaded", async function () {
-            const carousel = document.querySelector("[data-persona-carousel]");
-
-            if (carousel) {
-                const viewport = carousel.querySelector(".persona-carousel__viewport");
-                const track = carousel.querySelector(".persona-carousel__track");
-                const slides = Array.from(carousel.querySelectorAll(".persona-carousel__slide"));
-                const tabs = Array.from(carousel.querySelectorAll('[role="tab"]'));
-                const status = carousel.querySelector(".persona-carousel__status");
-                let activeIndex = 0;
-                let pointerStart = null;
-
-                const showSlide = (nextIndex, moveFocus = false) => {
-                    activeIndex = (nextIndex + slides.length) % slides.length;
-                    track.style.transform = `translateX(-${activeIndex * 100}%)`;
-
-                    slides.forEach((slide, index) => {
-                        slide.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
-                    });
-
-                    tabs.forEach((tab, index) => {
-                        const isActive = index === activeIndex;
-                        tab.setAttribute("aria-selected", isActive ? "true" : "false");
-                        tab.tabIndex = isActive ? 0 : -1;
-                    });
-
-                    status.textContent = `Showing persona ${activeIndex + 1} of ${slides.length}`;
-
-                    if (moveFocus) {
-                        tabs[activeIndex].focus();
-                    }
-                };
-
-                tabs.forEach((tab, index) => {
-                    tab.addEventListener("click", () => showSlide(index));
-                });
-
-                viewport.addEventListener("keydown", (event) => {
-                    if (event.key === "ArrowLeft") {
-                        event.preventDefault();
-                        showSlide(activeIndex - 1);
-                    }
-
-                    if (event.key === "ArrowRight") {
-                        event.preventDefault();
-                        showSlide(activeIndex + 1);
-                    }
-                });
-
-                carousel.querySelector(".persona-carousel__dots").addEventListener("keydown", (event) => {
-                    if (event.key === "ArrowLeft") {
-                        event.preventDefault();
-                        showSlide(activeIndex - 1, true);
-                    }
-
-                    if (event.key === "ArrowRight") {
-                        event.preventDefault();
-                        showSlide(activeIndex + 1, true);
-                    }
-
-                    if (event.key === "Home") {
-                        event.preventDefault();
-                        showSlide(0, true);
-                    }
-
-                    if (event.key === "End") {
-                        event.preventDefault();
-                        showSlide(slides.length - 1, true);
-                    }
-                });
-
-                viewport.addEventListener("pointerdown", (event) => {
-                    if (!event.isPrimary) return;
-                    pointerStart = event.clientX;
-                    viewport.setPointerCapture(event.pointerId);
-                });
-
-                viewport.addEventListener("pointerup", (event) => {
-                    if (pointerStart === null) return;
-
-                    const distance = event.clientX - pointerStart;
-                    pointerStart = null;
-
-                    if (Math.abs(distance) < 50) return;
-                    showSlide(activeIndex + (distance < 0 ? 1 : -1));
-                });
-
-                viewport.addEventListener("pointercancel", () => {
-                    pointerStart = null;
-                });
-
-                showSlide(0);
-            }
-
             const [header, footer] = await Promise.all([
                 fetch("partials/header.html"),
                 fetch("partials/footer.html")
@@ -388,6 +424,150 @@
             document.getElementById("header").innerHTML = await header.text();
             document.getElementById("footer").innerHTML = await footer.text();
         });
+
+        document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+            const slides = carousel.querySelectorAll("[data-carousel-slide]");
+            const dots = carousel.nextElementSibling.querySelectorAll("[data-carousel-dot]");
+            let activeIndex = 0;
+
+            function showSlide(index) {
+                activeIndex = (index + slides.length) % slides.length;
+                slides.forEach((slide, i) => slide.classList.toggle("is-active", i === activeIndex));
+                dots.forEach((dot, i) => dot.classList.toggle("is-active", i === activeIndex));
+            }
+
+            carousel.querySelector("[data-carousel-prev]").addEventListener("click", () => showSlide(activeIndex - 1));
+            carousel.querySelector("[data-carousel-next]").addEventListener("click", () => showSlide(activeIndex + 1));
+            dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
+        });
+
+        document.querySelectorAll("[data-flowchart-viewer]").forEach((viewer) => {
+            const canvas = viewer.querySelector("[data-flowchart-canvas]");
+            let image = viewer.querySelector("[data-flowchart-image]");
+            const minScale = 1;
+            const maxScale = 6;
+            let scale = 1;
+            let x = 0;
+            let y = 0;
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragStartY = 0;
+
+            function apply() {
+                image.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+            }
+
+            const sourceEl = viewer.querySelector("[data-flowchart-source]");
+            if (window.mermaid && sourceEl) {
+                window.mermaid.initialize({ startOnLoad: false });
+                const id = "flowchart-svg-" + Math.random().toString(36).slice(2);
+                window.mermaid.render(id, sourceEl.textContent.trim())
+                    .then(({ svg }) => {
+                        canvas.innerHTML = svg;
+                        const svgEl = canvas.querySelector("svg");
+                        svgEl.setAttribute("data-flowchart-image", "");
+                        image = svgEl;
+                        apply();
+                    })
+                    .catch((err) => {
+                        console.warn("[flowchart] Mermaid render failed, using static image fallback", err);
+                    });
+            }
+
+            function clampScale(value) {
+                return Math.min(maxScale, Math.max(minScale, value));
+            }
+
+            canvas.addEventListener("wheel", (e) => {
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const pointerX = e.clientX - rect.left;
+                const pointerY = e.clientY - rect.top;
+                const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+                const newScale = clampScale(scale * factor);
+                x = pointerX - (pointerX - x) * (newScale / scale);
+                y = pointerY - (pointerY - y) * (newScale / scale);
+                scale = newScale;
+                if (scale === minScale) { x = 0; y = 0; }
+                apply();
+            }, { passive: false });
+
+            canvas.addEventListener("pointerdown", (e) => {
+                isDragging = true;
+                dragStartX = e.clientX - x;
+                dragStartY = e.clientY - y;
+                canvas.classList.add("is-dragging");
+                canvas.setPointerCapture(e.pointerId);
+            });
+
+            canvas.addEventListener("pointermove", (e) => {
+                if (!isDragging) return;
+                x = e.clientX - dragStartX;
+                y = e.clientY - dragStartY;
+                apply();
+            });
+
+            function endDrag() {
+                isDragging = false;
+                canvas.classList.remove("is-dragging");
+            }
+            canvas.addEventListener("pointerup", endDrag);
+            canvas.addEventListener("pointercancel", endDrag);
+
+            function zoomStep(factor) {
+                const rect = canvas.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const newScale = clampScale(scale * factor);
+                x = centerX - (centerX - x) * (newScale / scale);
+                y = centerY - (centerY - y) * (newScale / scale);
+                scale = newScale;
+                if (scale === minScale) { x = 0; y = 0; }
+                apply();
+            }
+
+            viewer.querySelector("[data-flowchart-zoom-in]").addEventListener("click", () => zoomStep(1.3));
+            viewer.querySelector("[data-flowchart-zoom-out]").addEventListener("click", () => zoomStep(1 / 1.3));
+            viewer.querySelector("[data-flowchart-zoom-reset]").addEventListener("click", () => {
+                scale = 1;
+                x = 0;
+                y = 0;
+                apply();
+            });
+        });
+
+        const lightbox = document.querySelector("[data-lightbox]");
+        if (lightbox) {
+            const lightboxImage = lightbox.querySelector("[data-lightbox-image]");
+
+            function openLightbox(src, alt) {
+                lightboxImage.src = src;
+                lightboxImage.alt = alt;
+                lightbox.hidden = false;
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeLightbox() {
+                lightbox.hidden = true;
+                lightboxImage.src = "";
+                document.body.style.overflow = "";
+            }
+
+            document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
+                trigger.addEventListener("click", () => {
+                    const img = trigger.querySelector("img");
+                    openLightbox(img.src, img.alt);
+                });
+            });
+
+            lightbox.querySelector("[data-lightbox-close]").addEventListener("click", closeLightbox);
+            lightbox.addEventListener("click", (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+            });
+        }
     </script>
 </body>
 

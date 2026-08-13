@@ -21,30 +21,38 @@
 
     <main>
         <section class="hero" aria-labelledby="hero-heading">
-            <div class="hero-art" aria-hidden="true">
-                <img src="assets/home-hero-illustration.webp" alt="" width="1440" height="1060" />
-            </div>
-            <h1 id="hero-heading">
-                I’m a <em>UX Designer</em> solving problems one coffee at a time! My name is Veronica.
-                <span>Let’s work together.</span>
+            <h1 id="hero-heading" class="hero-a11y-title">
+                I'm a <em>UX Designer</em> solving problems one coffee at a time! My name is Veronica.
+                <span>Let's work together.</span>
             </h1>
+
+            <div class="hero-scene" aria-hidden="true">
+                <div class="hero-composed-wrap">
+                    <img class="hero-composed" src="assets/hero/hero-composed.svg" alt="" width="1575" height="927" />
+                </div>
+            </div>
+
+            <p class="hero-cta" aria-hidden="true">
+                Let's work together
+                <img class="hero-cta-arrow" src="assets/hero/arrow-down.svg" alt="" />
+            </p>
         </section>
 
         <section class="work" id="work" aria-labelledby="work-heading">
             <div class="section-heading">
+                <span aria-hidden="true"></span>
                 <h2 id="work-heading">My Work</h2>
                 <span aria-hidden="true"></span>
             </div>
 
             <div class="project-list">
                 <article class="project-card project-card--survey">
-                    <div class="project-visual figma-crop" aria-hidden="true">
-                        <img src="assets/figma-homepage.png" alt="" />
+                    <div class="project-visual" aria-hidden="true">
+                        <img src="assets/hero/survey-thumbnail.svg" alt="" />
                     </div>
                     <div class="project-copy">
                         <div class="project-title-row">
-                            <span class="project-number" aria-hidden="true">1</span>
-                            <h3>Survey Platform and Redesign</h3>
+                            <h3>Survey Redesign</h3>
                         </div>
                         <p>
                             I helped redesign surveys for our edtech software to better understand where users were
@@ -57,32 +65,17 @@
 
                 <article class="project-card project-card--pilot">
                     <div class="project-visual">
-                        <img src="assets/digital-pilot-examiner.png"
+                        <img src="assets/hero/dpe-thumbnail.svg"
                             alt="Gleim Digital Pilot Examiner launch-page design" />
                     </div>
                     <div class="project-copy">
                         <div class="project-title-row">
-                            <span class="project-number" aria-hidden="true">2</span>
                             <h3>Digital Pilot Examiner</h3>
                         </div>
                         <p>
                             I translated a new AI-powered aviation training product into a clear, demo-first experience
                             for pilots preparing for the oral portion of their FAA practical exam.
                         </p>
-                        <a class="project-button" href="digital-pilot-examiner.html">Read the case study</a>
-                    </div>
-                </article>
-
-                <article class="project-card project-card--placeholder">
-                    <div class="project-visual figma-crop" aria-hidden="true">
-                        <img src="assets/figma-homepage.png" alt="" />
-                    </div>
-                    <div class="project-copy">
-                        <div class="project-title-row">
-                            <span class="project-number" aria-hidden="true">3</span>
-                            <h3>Wiley Partnership</h3>
-                        </div>
-                        <p>A third case study is currently being prepared.</p>
                         <span class="project-button project-button--disabled" aria-disabled="true">Coming soon</span>
                     </div>
                 </article>
@@ -101,6 +94,33 @@
 
             document.getElementById("header").innerHTML = await header.text();
             document.getElementById("footer").innerHTML = await footer.text();
+
+            document.querySelectorAll(".site-nav-menu").forEach((menu) => {
+                let hideTimer;
+                const trigger = menu.querySelector(".site-nav-trigger");
+
+                const show = () => {
+                    clearTimeout(hideTimer);
+                    menu.classList.add("is-open");
+                    if (trigger) trigger.setAttribute("aria-expanded", "true");
+                };
+
+                const hide = () => {
+                    hideTimer = setTimeout(() => {
+                        menu.classList.remove("is-open");
+                        if (trigger) trigger.setAttribute("aria-expanded", "false");
+                    }, 180);
+                };
+
+                menu.addEventListener("mouseenter", show);
+                menu.addEventListener("mouseleave", hide);
+                menu.addEventListener("focusin", show);
+                menu.addEventListener("focusout", (event) => {
+                    if (!menu.contains(event.relatedTarget)) {
+                        hide();
+                    }
+                });
+            });
         });
     </script>
 </body>
