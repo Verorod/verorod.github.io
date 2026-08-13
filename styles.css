@@ -75,7 +75,7 @@ a {
     z-index: 20;
     height: 78px;
     min-height: 78px;
-    padding: 20px 32px;
+    padding: 20px max(32px, calc((100% - 1400px) / 2));
     border-bottom: 1px solid var(--rule);
     display: flex;
     align-items: center;
